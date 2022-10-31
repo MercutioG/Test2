@@ -6,11 +6,16 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
-    background: black;
+    background-color: black;
     flex-direction: column;
+    font-family: arial;
     align-items: center;
     align-items: center;
     overflow: hidden;
+}
+
+#loadScreen {
+    text-align: center;
 }
 
 .screen {
