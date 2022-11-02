@@ -3,7 +3,7 @@ let player = {
     DPS: 5,
 }
 let testDummy = {
-    imgID: 'dummy-img',
+    imgID: './assets/testDummy.png',
     maxHP: 100,
     DPS: 5,
 }

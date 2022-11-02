@@ -1,5 +1,5 @@
 let fight = new Fight();
-window.gui = new Gui(fight);
+window.gui = new Gui();
 
 window.onload = function() {
     console.log('loading...');
