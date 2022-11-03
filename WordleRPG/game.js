@@ -1,3 +1,15 @@
+let player = {
+    maxHP: 100,
+    damage: 5,
+    attackSpeed: 1000
+}
+let testDummy = {
+    imgID: './assets/testDummy.png',
+    maxHP: 100,
+    damage: 5,
+    attackSpeed: 1000
+}
+
 class Fight {
     constructor () {
         console.log('test')
@@ -5,14 +17,18 @@ class Fight {
         this.cnv = null;
         this.ctx = null;
         this.gameOn = false;
+        this.enemy = null;
+        this.tempEnemyHP = null;
+        this.tempPlayerHP = null;
+        this.player = player;
     }
     init(enemyid) {
         this.gameOn = true;
         this.pic = document.getElementById('uni')
         this.cnv = document.getElementById('gameScreen');
         this.ctx = this.cnv.getContext('2d');
-        this.enemy = enemyid;
         this.tempPlayerHP = player.maxHP;
+        this.enemy = enemyid;
         this.tempEnemyHP = this.enemy.maxHP;
         this.pic.src = this.enemy.imgID;
         this.refreshCanvas();
@@ -35,7 +51,7 @@ class Fight {
         this.ctx.fillStyle = 'gray';
         this.ctx.fillRect(325, 313, 150, 13)
         this.ctx.fillStyle = 'red';
-        this.ctx.fillRect(325, 313, this.tempPlayerHP / player.maxHP * 150, 13);
+        this.ctx.fillRect(325, 313, (this.tempPlayerHP / player.maxHP) * 150, 13);
     }
     drawBorder() {
         this.ctx.strokeStyle = 'gray'
@@ -54,21 +70,23 @@ class Fight {
         let enemyAttackTimer = setInterval(this.enemyAttack, this.enemy.attackSpeed)
     }
     playerAttack() {
-        if (this.tempEnemyHP - player.DPT > 0) {
-            this.tempEnemyHP - player.DPT
-            this.refreshCanvas()
+        if ((window.fight.tempEnemyHP - window.fight.player.damage) > 0) {
+            window.fight.tempEnemyHP -= window.fight.player.damage
         }
         else {
+            window.fight.tempEnemyHP = 0
             console.log('Enemy slain!')
         }
+        window.fight.refreshCanvas()
     }
     enemyAttack() {
-        if (this.tempPlayerHP - enemy.DPT > 0) {
-            this.tempPlayerHP -= enemy.DPT
-            this.refreshCanvas()
+        if ((window.fight.tempPlayerHP - window.fight.enemy.damage) > 0) {
+            window.fight.player.tempPlayerHP - window.fight.enemy.damage
         }
         else {
+            window.fight.tempPlayerHP = 0
             console.log('Player killed!')
         }
+        window.fight.refreshCanvas()
     }
 }

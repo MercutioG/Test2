@@ -4,7 +4,6 @@ class Gui {
         this.ctx = null;
         this.resources = null;
         this.resourcesToLoad = 0;
-        window.game = new Fight();
     }
     prepareCanvas() {
         this.cnv = document.getElementById('gameScreen');
@@ -69,23 +68,23 @@ class Gui {
     startFight(enemyid) {
         this.showScreen(this.cnv.id)
         this.prepareCanvas()
-        window.game.init(enemyid);
+        window.fight.init(enemyid);
         mouseDetector();
     }
 }
 
 function mouseDetector() {
     window.gui.cnv.addEventListener('mousemove', function(e) {
-        if (window.game.gameOn = true) {
+        if (window.fight.gameOn = true) {
             let target = e.target;
             let rect = target.getBoundingClientRect();
             let x = Math.round(e.clientX - rect.left);
             let y = Math.round(e.clientY - rect.top);
             if ( (x >= 300 && x <= 500 ) && (y >= 75 && y <= 225) ) {
-                window.game.hoverEnemy();
+                window.fight.hoverEnemy();
             }
             else {
-                window.game.resetBorder();
+                window.fight.resetBorder();
             }
         }
         else {
@@ -93,9 +92,9 @@ function mouseDetector() {
         }
     })
     window.gui.cnv.addEventListener('click', function(e) {
-        if (window.game.gameOn == true) {
-            if (window.game.hoverOverEnemy == true) {
-                window.game.startFight();
+        if (window.fight.gameOn == true) {
+            if (window.fight.hoverOverEnemy == true) {
+                window.fight.startFight();
             }
         }
     })
