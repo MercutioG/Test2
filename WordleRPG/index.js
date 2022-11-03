@@ -1,4 +1,3 @@
-let fight = new Fight();
 window.gui = new Gui();
 
 window.onload = function() {
@@ -7,3 +6,4 @@ window.onload = function() {
         { id: 'dummy-img', var: dummyImg = document.createElement('img'), file: 'assets/testDummy.png' }
     ]);
 }
+
