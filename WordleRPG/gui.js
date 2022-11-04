@@ -1,13 +1,11 @@
 class Gui {
     constructor() {
         this.cnv = null;
-        this.ctx = null;
         this.resources = null;
         this.resourcesToLoad = 0;
     }
     prepareCanvas() {
         this.cnv = document.getElementById('gameScreen');
-        this.ctx = this.cnv.getContext("2d");
     }
     toggleScreen(id, toggle) {
         let element = document.getElementById(id);
@@ -67,7 +65,7 @@ class Gui {
     }
     startFight(enemyid) {
         this.showScreen(this.cnv.id)
-        this.prepareCanvas()
+        this.prepareCanvas();
         window.fight.init(enemyid);
         mouseDetector();
     }
@@ -99,3 +97,5 @@ function mouseDetector() {
         }
     })
 }
+
+// This prints out as undefined
