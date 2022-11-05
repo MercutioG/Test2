@@ -37,14 +37,14 @@ class Fight {
     drawEnemyPicture() {
         this.ctx.fillStyle = 'black';
         this.ctx.fillRect(300, 75, 200, 150);
-        this.ctx.drawImage(this.pic, 300, 75, 200, 150);
+        this.ctx.drawImage(this.pic, 325, 75, 150, 150);
     }
     drawEnemyHp(status) {
         this.ctx.font = "30px Arial";
         this.ctx.textAlign = 'center';
         if (status) {
             this.ctx.fillStyle = 'red';
-            this.ctx.fillText(String(this.tempEnemyHP), 400, 265);
+            this.ctx.fillText(String(this.tempEnemyHP), 400, 275);
         } else {
             this.ctx.fillStyle = 'black';
             this.ctx.fillRect(350, 235, 100, 40)
@@ -61,23 +61,27 @@ class Fight {
             this.ctx.fillRect(325, 313, 150, 13)
         }
     }
-    drawBorder() {
-        this.ctx.strokeStyle = 'gray'
-        this.ctx.strokeRect(300, 75, 200, 150);
-    }
-    resetBorder() {
-        this.ctx.drawImage(this.pic, 300, 75, 200, 150);
+    drawBorder(status, x, y, width, height) {
+        if (status) {
+            this.ctx.lineWidth = 3;
+            this.ctx.strokeStyle = 'white';
+            this.ctx.strokeRect(x, y, width, height);
+        } else {
+            this.ctx.lineWidth = 6;
+            this.ctx.strokeStyle = 'black';
+            this.ctx.strokeRect(x, y, width, height);
+        }
     }
     hoverEnemy() {
         this.drawBorder()
         this.hoverOverEnemy = true;
     }
-    startFight() { // This method calls the other 2 methods
+    startFight() {
         console.log('Fight started')
         let playerAttackTimer = setInterval(this.playerAttack, this.player.attackSpeed);
         let enemyAttackTimer = setInterval(this.enemyAttack, this.enemy.attackSpeed)
     }
-    playerAttack() { // These 2 methods below are where "this" is undefined
+    playerAttack() {
         window.fight.drawEnemyHp(false);
         if ((window.fight.tempEnemyHP - window.fight.player.damage) > 0) {
             window.fight.tempEnemyHP -= window.fight.player.damage;

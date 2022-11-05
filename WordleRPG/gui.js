@@ -79,10 +79,10 @@ function mouseDetector() {
             let x = Math.round(e.clientX - rect.left);
             let y = Math.round(e.clientY - rect.top);
             if ( (x >= 300 && x <= 500 ) && (y >= 75 && y <= 225) ) {
-                window.fight.hoverEnemy();
+                window.fight.drawBorder(true, 325, 75, 150, 150);
             }
             else {
-                window.fight.resetBorder();
+                window.fight.drawBorder(false, 325, 75, 150, 150);
             }
         }
         else {
