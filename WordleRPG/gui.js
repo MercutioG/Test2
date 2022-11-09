@@ -78,11 +78,14 @@ function mouseDetector() {
             let rect = target.getBoundingClientRect();
             let x = Math.round(e.clientX - rect.left);
             let y = Math.round(e.clientY - rect.top);
+            
             if ( (x >= 300 && x <= 500 ) && (y >= 75 && y <= 225) ) {
                 window.fight.drawBorder(true, 325, 75, 150, 150);
+                window.fight.hoverEnemy(true)
             }
             else {
                 window.fight.drawBorder(false, 325, 75, 150, 150);
+                window.fight.hoverEnemy(false)
             }
         }
         else {

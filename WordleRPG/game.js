@@ -8,10 +8,12 @@ class Fight {
         this.tempEnemyHP = null;
         this.tempPlayerHP = null;
         this.gameOn = false;
+        this.hoverOverEnemy = false;
     }
     init(enemyid) {
         this.cnv = document.getElementById('gameScreen');
         this.ctx = this.cnv.getContext('2d');
+        this.gameOn = true;
         this.pic = document.getElementById('uni')
         this.enemy = enemyid;
         this.player = player;
@@ -72,9 +74,10 @@ class Fight {
             this.ctx.strokeRect(x, y, width, height);
         }
     }
-    hoverEnemy() {
+    hoverEnemy(status) {
         this.drawBorder()
-        this.hoverOverEnemy = true;
+        this.hoverOverEnemy = status;
+        console.log(this.hoverOverEnemy)
     }
     startFight() {
         console.log('Fight started')
