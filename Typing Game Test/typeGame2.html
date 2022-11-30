@@ -9,8 +9,8 @@
     <body>
         <label>Requirements: <spam id="requirement-spam">FF</spam></label><br>
         <input id="user-input"></input>
-        <button id="check-input" onclick="checkInput(document.getElementById('user-input').value)">Check</button> <br>
-        <label>Correct: <spam id="correct-spam">0</spam><br> Incorrect: <spam id="incorrect-spam">0</spam></label>
+        <button id="check-input" onclick="checkInput(document.getElementById('user-input').value.toUpperCase())">Check</button> <br>
+        <label>Points: <spam id="points-spam">0</spam><br> Rounds: <spam id="rounds-spam">0</spam><br> Lives: <spam id="lives-spam">5</spam></label>
         <script src="typeGame.js"></script>
     </body>
 </html>
