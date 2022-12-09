@@ -1,23 +1,20 @@
-const userInputBox = document.getElementById('user-input')
-const reqLabel = document.getElementById('requirement-spam')
-let points = 0; let lives = 5; let rounds = 0; let wordRequirements
+const userInputBox = document.getElementById('user-input');
+const reqLabel = document.getElementById('requirement-spam');
+let points = 0; let lives = 5; let rounds = 0; let wordRequirements;
 
 function checkInput(input) {
-    if(checkIfWordMeetsReqs(input) && checkIfWordExists(input)) {
-        console.log('Game won!')
-        points += input.length
-    } else {lives--}
-    newRound()
+    if(checkIfWordMeetsReqs(input) && checkIfWordExists(input)) { points += input.length } else {lives--};
+    newRound();
 }
 
 function newRound() {
-    determineReqs()
-    rounds++
+    determineReqs();
+    rounds++;
     document.getElementById('points-spam').innerHTML = points;
     document.getElementById('rounds-spam').innerHTML = rounds;
     document.getElementById('lives-spam').innerHTML = lives;
-    userInputBox.value = ''
-    reqLabel.innerHTML = wordRequirements.toLowerCase()
+    userInputBox.value = '';
+    reqLabel.innerHTML = wordRequirements.toLowerCase();
 }
 
 let checkIfWordExists = (x) => {
@@ -26,19 +23,19 @@ let checkIfWordExists = (x) => {
     http.open('HEAD', url, false);
     http.send();
     if (http.status != 404) {
-        return true
+        return true;
     } else {
-        return false
+        return false;
     }
 }
 
-let checkIfWordMeetsReqs = (x) => { if (x.includes(wordRequirements)) {return true} else {return false} }
+let checkIfWordMeetsReqs = (x) => { if (x.includes(wordRequirements)) {return true} else {return false} };
 
 function determineReqs() {
     let randomLetters = () => {
         const randomWordDatabase = [
             'WHITEBAG',
-            'DISESTABLISHMENTARIANISM',
+            'ANTIDISESTABLISHMENTARIANISM',
             'FROGGO',
             'ANDREW',
             'BRENARD',
@@ -57,7 +54,7 @@ function determineReqs() {
             'TIME',
             'APPLE',
             'NORTH',
-            'KOREA',
+            'BLANKETS',
             'SUPERCALIFRAGILISTICEXPIALIDOCIOUS',
             'ARIZONA'
         ]
