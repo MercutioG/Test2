@@ -1,18 +1,23 @@
 const userInputBox = document.getElementById('user-input');
 const reqLabel = document.getElementById('requirement-spam');
-let points = 0; let lives = 5; let rounds = 0; let wordRequirements;
+let points = 0; let bossHP = 100; let rounds = 0; let wordRequirements; let playerHP = 100; let timer = 10;
 
 function checkInput(input) {
-    if(checkIfWordMeetsReqs(input) && checkIfWordExists(input)) { points += input.length } else {lives--};
+    if(checkIfWordMeetsReqs(input) && checkIfWordExists(input)) { 
+        points += Math.round(input.length**1.5 + 3);
+        bossHP -= points;
+    } else {playerHP -= 3};
     newRound();
 }
 
 function newRound() {
     determineReqs();
+    timer = 10;
     rounds++;
     document.getElementById('points-spam').innerHTML = points;
     document.getElementById('rounds-spam').innerHTML = rounds;
-    document.getElementById('lives-spam').innerHTML = lives;
+    document.getElementById('lives-spam').innerHTML = bossHP;
+    document.getElementById('health-spam').innerHTML = playerHP;
     userInputBox.value = '';
     reqLabel.innerHTML = wordRequirements.toLowerCase();
 }
@@ -65,5 +70,15 @@ function determineReqs() {
     }
     wordRequirements = randomLetters();
 }
+var downloadTimer = setInterval(function(){
+    if(timer <= 0){
+        clearInterval(downloadTimer);
+        playerHP -= 3;
+        newRound()
+    } else {
+        timer -= 1;
+    }
+    document.getElementById("timer").innerHTML = timer;
+}, 1000);
 
 newRound()
