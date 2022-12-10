@@ -13,6 +13,7 @@ function checkInput(input) {
 function newRound() {
     determineReqs();
     timer = 10;
+    callTimer();
     rounds++;
     document.getElementById('points-spam').innerHTML = points;
     document.getElementById('rounds-spam').innerHTML = rounds;
@@ -70,15 +71,16 @@ function determineReqs() {
     }
     wordRequirements = randomLetters();
 }
-var downloadTimer = setInterval(function(){
-    if(timer <= 0){
+function callTimer() {
+    downloadTimer = setInterval(function(){
+        if(timer <= 0){
         clearInterval(downloadTimer);
         playerHP -= 3;
         newRound()
-    } else {
+        } else {
         timer -= 1;
-    }
-    document.getElementById("timer").innerHTML = timer;
-}, 1000);
-
+        }
+        document.getElementById("timer").innerHTML = timer;
+    }, 1000);
+}
 newRound()
