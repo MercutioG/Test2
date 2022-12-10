@@ -14,7 +14,7 @@ function newRound() {
     document.getElementById('rounds-spam').innerHTML = rounds;
     document.getElementById('lives-spam').innerHTML = lives;
     userInputBox.value = '';
-    reqLabel.innerHTML = wordRequirements.toLowerCase();
+    reqLabel.innerHTML = wordRequirements.toUpperCase();
 }
 
 let checkIfWordExists = (x) => {

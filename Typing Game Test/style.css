@@ -1,0 +1,35 @@
+*{
+    margin: 0.2rem;
+    padding: 0rem;
+    color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.newText{
+    color: black;
+}
+
+.bigText{
+    font-size: x-large;
+}
+
+#user-input{
+    width: 20rem;
+    height: 2rem;
+    font-size: large;
+}
+
+#check-input{
+    width: 5rem;
+    height: 2rem;
+}
+
+img{
+    width: 12rem;
+    height: auto;
+}
+
+body{
+    background-color: rgb(20, 20, 20);
+}

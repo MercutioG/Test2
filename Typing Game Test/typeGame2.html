@@ -5,12 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <label>Requirements: <spam id="requirement-spam">FF</spam></label><br>
-        <input id="user-input"></input>
-        <button id="check-input" onclick="checkInput(document.getElementById('user-input').value.toUpperCase())">Check</button> <br>
-        <label>Points: <spam id="points-spam">0</spam><br> Rounds: <spam id="rounds-spam">0</spam><br> Lives: <spam id="lives-spam">5</spam></label>
+        <img src="./images/slime.png"><br>
+        <label><spam class="bigText" id="requirement-spam">FF</spam></label><br>
+
+        <input class="newText" id="user-input"></input>
+        <button class="newText" id="check-input" onclick="checkInput(document.getElementById('user-input').value.toUpperCase())">Check</button> <br><br>
+        
+        <label class="bigText">Points: <spam id="points-spam">0</spam><br> Rounds: <spam id="rounds-spam">0</spam><br> Lives: <spam id="lives-spam">5</spam></label>
         <script src="typeGame.js"></script>
     </body>
 </html>
