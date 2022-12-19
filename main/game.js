@@ -5,6 +5,6 @@ class Game {
         this.playerHP = player.maxHP;
     }
     init() {
-        window.gui.toggleWindow()
+        window.gui.toggleWindow('fight-display')
     }
 }

@@ -3,7 +3,10 @@ class Gui {
         document.getElementById(window).style = 'display: block';
     }
     closeWindows() {
-        document.getElementsByClassName('window').foreach(i => {i.style = 'display: none;'});
+        let windows = document.getElementsByClassName('window');
+        for (let i = 0; i < windows.length; i++) {
+            windows[i].style.display = 'none';
+        }
     }
     toggleWindow(window) {
         this.closeWindows();
