@@ -4,18 +4,20 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Wordle RPG</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <img src="./images/slime.png"><br>
         <label>Requirements: <spam id="requirement-spam">FF</spam></label><br>
         <input id="user-input"></input>
         <button id="check-input" onclick="checkInput(document.getElementById('user-input').value.toUpperCase())">Check</button> <br>
         <label>
-            Damage: <spam id="points-spam">0</spam><br> 
-            Rounds: <spam id="rounds-spam">0</spam><br> 
-            Enemy Health: <spam id="lives-spam">100</spam><br>
+            <br>Enemy Health: <spam id="lives-spam">100</spam><br>
+            Time Until Attack: <spam id="timer">10</spam><br><br>
+            Damage: <spam id="points-spam">0</spam><br>
             Player Health: <spam id="health-spam">100</spam><br>
-            Time Until Attack: <spam id="timer">10</spam>
+            Rounds: <spam id="rounds-spam">0</spam><br> 
         </label>
         <script src="typeGame.js"></script>
     </body>
