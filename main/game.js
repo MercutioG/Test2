@@ -57,7 +57,7 @@ class Game {
         this.wordReqs = "TT"
     }
     gameOver() {}
-    gameWon() {}
+    gameWon() {} // Methods that will be further used to spice up the game.
     updateInterface() {
         let requirementsLabel = document.getElementById("requirements-label")
         let timerLabel = document.getElementById("timer-label")
@@ -69,5 +69,5 @@ class Game {
         playerHealthLabel.innerHTML = this.playerHP;
         enemyHealthLabel.innerHTML = this.enemyHP;
         enemiesKilledLabel.innerHTML = this.enemiesKilled;
-    }
+    } //Method that updates the interface for the user, called whenever there's a change in variables, such as timer tick, damage, or more.
 }
