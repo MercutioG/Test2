@@ -5,9 +5,9 @@ class Game {
         this.enemyHP = this.enemy.maxHP;
         this.difficulty = difficulty;
         this.playerHP = this.player.maxHP;
-        this.wordReqs = null;
         this.timerFunction = null;
         this.currentTimer = null;
+        this.wordRequirements = null;
         this.enemiesKilled = 0; // Builds in base variables needed for storing information about the game for further use.
     }
     init() {
@@ -31,32 +31,83 @@ class Game {
         }
         game.checkGameState()
     } //Ticks the timer, checks if timer reaches 0. If timer reaches 0, the enemy will attack and the round will reset.
-    playerAttack() {
-        if (game.mobHP - game.player.baseDamage <= 0) {
-            game.mobHP = 0
+    checkInput(input) {
+        if (input.toUpperCase().includes(this.wordRequirements)) {
+            console.log('Success')
+            this.playerSuccess()
         } else {
-            game.mobHP -= game.player.baseDamage
+            this.enemyAttack()
+            this.roundLoop()
         }
-        this.checkGameState()
-    } // Method that makes mob's HP decrease by the player's base attack.
-    enemyAttack() {
-        if (game.playerHP - game.enemy.baseDamage <= 0) {
+    }
+    playerSuccess() {
+        this.playerAttack()
+        this.roundLoop()
+    }
+    playerAttack() {
+        if (game.enemyHP - game.player.baseDamage <= 0) {
             game.enemyHP = 0
         } else {
             game.enemyHP -= game.player.baseDamage
         }
+        console.log(game.enemyHP)
+        this.checkGameState()
+    } // Method that makes mob's HP decrease by the player's base attack.
+    enemyAttack() {
+        if (game.playerHP - game.enemy.baseDamage <= 0) {
+            game.playerHP = 0
+        } else {
+            game.playerHP -= game.player.baseDamage
+        }
         this.checkGameState()
     } // Like player attack but for when the enemy attacks.
     checkGameState() {
-        if (playerHP === 0) {
-            this.gameOver()
-        }
+        if (this.playerHP === 0) {
+            this.gameOver();
+        } else if (this.enemyHP === 0) {
+            this.gameWon();
+        } 
         this.updateInterface()
     } //Checks if game has been decided, such as if player dies or player kills mob.
     determineWordReqs() {
-        this.wordReqs = "TT"
+        let randomLetters = () => {
+            const randomWordDatabase = [
+                'WHITEBAG',
+                'ANTIDISESTABLISHMENTARIANISM',
+                'FROGGO',
+                'ANDREW',
+                'BRENARD',
+                'TERRARIA',
+                'TESTISTIFICATE',
+                'UNICORN',
+                'AGRARIAN',
+                'UNITED',
+                'PNEUMONOULTRAMICROSCOPICSILICOVOLCANOCONIOSIS',
+                'CHUGNIS',
+                'THE',
+                'GREATEST',
+                'GAME',
+                'OF',
+                'ALL',
+                'TIME',
+                'APPLE',
+                'NORTH',
+                'BLANKETS',
+                'SUPERCALIFRAGILISTICEXPIALIDOCIOUS',
+                'ARIZONA'
+            ]
+            let determineWord = () => {return randomWordDatabase[Math.floor(Math.random() * randomWordDatabase.length)].split('')}
+            let wordArray = determineWord()
+            let randomIndex = Math.floor(Math.random() * (wordArray.length - 1))
+            return wordArray[randomIndex] + wordArray[randomIndex + 1]
+        }
+        game.wordRequirements = randomLetters();
+        this.updateInterface()
     }
-    gameOver() {}
+    gameOver() {
+        clearInterval(game.timerFunction)
+        alert('Game over!')
+    }
     gameWon() {} // Methods that will be further used to spice up the game.
     updateInterface() {
         let requirementsLabel = document.getElementById("requirements-label")
@@ -64,7 +115,7 @@ class Game {
         let playerHealthLabel = document.getElementById("player-health-label")
         let enemyHealthLabel = document.getElementById("enemey-health-label")
         let enemiesKilledLabel = document.getElementById("total-kills-label")
-        requirementsLabel.innerHTML = this.wordReqs;
+        requirementsLabel.innerHTML = this.wordRequirements;
         timerLabel.innerHTML = this.currentTimer;
         playerHealthLabel.innerHTML = this.playerHP;
         enemyHealthLabel.innerHTML = this.enemyHP;
