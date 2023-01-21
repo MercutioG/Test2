@@ -7,11 +7,13 @@
         <title>Document</title>
         <script src="game.js"></script>
         <script src="gui.js"></script>
-        <script src="index.js"></script>
+        <script src="stats.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="start-display" class="window">
             <button id="start-button" onclick="window.gui.startGame()">Start</button>
+            <p>The objective of the game is to defeat as many enemies as<br> possible by writing words that contain the letters above<br><br>EX: If the reqirements are AP, some possible choices are<br><strong>AP</strong>ple<br>pine<strong>AP</strong>ple</strong><br>scr<strong>AP</strong></p>
         </div>
         <div id="fight-display" class="window" style="display:none;">
             <label>Requirements: <spam id="requirements-label">FF</spam></label><br>
@@ -22,7 +24,8 @@
                 Player Health: <spam id="player-health-label"></spam> <br>
                 Enemy Health: <spam id="enemey-health-label"></spam> <br>
                 Total Enemies Killed: <spam id="total-kills-label"></spam>
-            </label>
+            </label><br><br><br>
+            <p>The objective of the game is to defeat as many enemies as<br> possible by writing words that contain the letters above<br><br>EX: If the reqirements are AP, some possible choices are<br><strong>AP</strong>ple<br>pine<strong>AP</strong>ple</strong><br>scr<strong>AP</strong></p>
         </div>
     </body>
 </html>

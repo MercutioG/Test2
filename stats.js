@@ -5,5 +5,5 @@ window.player = {
     baseDamage: 20
 };
 window.mobs = {
-    mob1: {maxHP: 100, baseDamage: 5}
+    mob1: {maxHP: 100, baseDamage: 10}
 };

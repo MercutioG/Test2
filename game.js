@@ -47,6 +47,7 @@ class Game {
     playerAttack() {
         if (game.enemyHP - game.player.baseDamage <= 0) {
             game.enemyHP = 0
+            game.reloadEnemy()
         } else {
             game.enemyHP -= game.player.baseDamage
         }
@@ -57,7 +58,7 @@ class Game {
         if (game.playerHP - game.enemy.baseDamage <= 0) {
             game.playerHP = 0
         } else {
-            game.playerHP -= game.player.baseDamage
+            game.playerHP -= game.enemy.baseDamage
         }
         this.checkGameState()
     } // Like player attack but for when the enemy attacks.
@@ -94,7 +95,16 @@ class Game {
                 'NORTH',
                 'BLANKETS',
                 'SUPERCALIFRAGILISTICEXPIALIDOCIOUS',
-                'ARIZONA'
+                'ARIZONA',
+                'PEAR',
+                'ORANGE',
+                'FLIGHT',
+                'RAN',
+                'PIZZA',
+                'GAME',
+                'ABSTRACT',
+                'PIE',
+                'SUPER'
             ]
             let determineWord = () => {return randomWordDatabase[Math.floor(Math.random() * randomWordDatabase.length)].split('')}
             let wordArray = determineWord()
@@ -106,7 +116,7 @@ class Game {
     }
     gameOver() {
         clearInterval(game.timerFunction)
-        alert('Game over!')
+        location.reload()
     }
     gameWon() {} // Methods that will be further used to spice up the game.
     updateInterface() {
@@ -121,4 +131,10 @@ class Game {
         enemyHealthLabel.innerHTML = this.enemyHP;
         enemiesKilledLabel.innerHTML = this.enemiesKilled;
     } //Method that updates the interface for the user, called whenever there's a change in variables, such as timer tick, damage, or more.
+    reloadEnemy() { //STARTED WORKING ON RESETTING ENEMIES, PLEASE FINISH (self-reminder)
+        this.enemiesKilled++
+        this.enemyHP = 100
+        this.playerHP += 8
+        this.enemy
+    }
 }
